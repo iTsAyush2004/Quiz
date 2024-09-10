@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response</title>
+    <style>
+        
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .response {
+            margin-top: 60px ;
+            padding: 20px;
+            height: 200px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(247, 54, 247);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .p1 {
+            color: black;
+            font-size: 24px;
+            font-weight: 700;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .p2 {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+        }.feedback {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .feedback.suggestion {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="response">
+        <div class="p1">
+            <p>Your form submitted successfully.</p>
+            <p>Your score is: <span id="score"></span></p>
+        </div>
+        <div class="p2">
+            <p>Thanks for your participation.</p>
+        </div>
+        <div class="feedback" id="feedback"></div>
+   </div>
+   <script>
+       document.addEventListener("DOMContentLoaded", function () {
+           const score = localStorage.getItem("score");
+           document.getElementById("score").innerText = score;
+
+           const feedback = document.getElementById("feedback");
+           if (score < 3) {
+               feedback.classList.add("suggestion");
+               feedback.innerText = "It looks like you need some more practice. Consider reviewing your topics and trying again!";
+           } else {
+               feedback.innerText = "Great job! You did well!";
+           }
+       });
+   </script>
+</body>
+</html>
